@@ -41,6 +41,15 @@ button:hover, input[type="submit"]:hover {
     cursor: pointer;
 }
 
+button:active, input[type="submit"]:active {
+    border: 2px inset #DCDCDC; /* Eingedrückter Button-Stil */
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #D0D0D0; /* Leicht dunklerer Effekt beim Hover */
+    cursor: pointer;
+}
+
 input[type="text"], textarea {
     border: 2px inset #DCDCDC;
     padding: 5px;
@@ -73,5 +82,16 @@ footer {
     padding: 10px;
     background-color: #D0D0D0;
     border-top: 1px solid black;
+
 }
 
+/* navbar buttons should be horizontally aligned */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    background-color: #000080;
+    color: white;
+    padding: 10px;
+}   

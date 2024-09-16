@@ -6,5 +6,8 @@ def create_app():
 
     from app.home_controller import home
     app.register_blueprint(home, url_prefix='/')
+
+    from app.changelog_controller import changelog
+    app.register_blueprint(changelog, url_prefix='/changelog')
     
     return app
