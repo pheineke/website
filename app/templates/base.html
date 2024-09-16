@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Site{% endblock %}</title>
+</head>
+<body></body>
+    <header>
+        {% block header %}
+            <h1>Welcome to my site</h1>
+        {% endblock %}
+    </header>
+    <nav>
+        {% block nav %}
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+            </ul>
+        {% endblock %}
+    </nav>
+    <section>
+        {% block content %}{% endblock %}
+    </section>
+    <footer>
+        {% block footer %}
+            <p>&copy; 2014 My Site</p>
+        {% endblock %}
+    </footer>
+</body>
+</html>
