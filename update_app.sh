@@ -6,7 +6,7 @@ LOCAL=$(git rev-parse @)
 REMOTE=$(git rev-parse @{u})
 
 if [ $LOCAL != $REMOTE ]; then
-    echo "## $(date '+%Y-%m-%d %H:%M:%S') - Updates found" >> update.md
+    echo "\n## $(date '+%Y-%m-%d %H:%M:%S') - Updates found" >> update.md
     # Get the list of new commits
     git log --oneline --pretty=format:"- %h %s" $LOCAL..$REMOTE >> update.md
     echo "" >> update.log  # Add a new line after the commit list
@@ -15,5 +15,5 @@ if [ $LOCAL != $REMOTE ]; then
     # Restart Gunicorn service
     sudo systemctl restart flaskapp
 else
-    echo "## $(date '+%Y-%m-%d %H:%M:%S') - No updates found" >> update.md
+    echo "\n## $(date '+%Y-%m-%d %H:%M:%S') - No updates found" >> update.md
 fi
