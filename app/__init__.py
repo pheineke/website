@@ -9,5 +9,8 @@ def create_app():
 
     from app.changelog_controller import changelog
     app.register_blueprint(changelog, url_prefix='/changelog')
+
+    from app.casaos_controller import casaos
+    app.register_blueprint(casaos, url_prefix='/casaos')
     
     return app
