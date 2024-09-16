@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>{% block title %}My Site{% endblock %}</title>
+    {% block styles %}{% endblock %}
+    {% block scripts %}{% endblock %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
 </head>
 <body></body>
@@ -17,12 +19,12 @@
                 <input type="submit" value="Home" />
             </form>
 
-            <form action="{{ url_for('changelog.index') }}" method="get">
-                <input type="submit" value="Changelog" />
+            <form action="{{ url_for('chat.index') }}" method="get">
+                <input type="submit" value="Chat" />
             </form>
 
-            <form action="http://buntes145.wohnheim.uni-kl.de:81" target="_blank" method="get">
-                <input type="submit" value="CasaOS" />
+            <form action="{{ url_for('changelog.index') }}" method="get">
+                <input type="submit" value="Changelog" />
             </form>
 
         {% endblock %}

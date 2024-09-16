@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Chat{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+{% endblock %}
+
+{% block scripts %}
+    <!-- <script src="{{ url_for('static', filename='js/chat.js') }}"></script> -->
+{% endblock %}
+
+{% block content %}
+    <script>
+        let room_id = 1;
+
+        getRooms();
+
+        function getRooms() {
+            fetch('/chat/rooms')
+            .then(response => response.json())
+            .then(data => {
+                const channels = document.getElementById('channels');
+                channels.innerHTML = '';
+                // data is an int. If there are no rooms, data will be 0
+                if (data === 0) {
+                    return;
+                } else {
+                    for (let i = 1; i <= data; i++) {
+                        const div = document.createElement('div');
+                        div.innerHTML = `<button onclick="loadChat(${i})">Room ${i}</button>`;
+                        channels.appendChild(div);
+                    }
+                }
+            });
+        }
+
+        //load chat messages
+        // this is how the response will look like [{'user': 'user_01', 'msg': 'Hello'}, {'user': 'user_02', 'msg': 'Hi'}]
+        function loadChat(room) {
+            fetch(`/chat/${room}`)
+            .then(response => response.json())
+            .then(data => {
+                const chat = document.getElementById('chat');
+                chat.innerHTML = '';
+                data.forEach(message => {
+                    const div = document.createElement('div');
+                    div.innerHTML = `<strong>${message.user}</strong>: ${message.content}`;
+                    chat.appendChild(div);
+                });
+                room_id = room;
+            });
+        }
+
+        function sendMessage() {
+            const message = document.getElementById('message-input').value;
+            fetch(`/chat/send/${room_id}`, {
+                method: 'POST',
+                body: JSON.stringify({user: 'user', content: message}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            });
+        }
+
+        function createChat() {
+            fetch(`/chat/create`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            });
+        }
+
+        setInterval(() => {
+            if (room_id !== 0) {
+                
+                loadChat(room_id);
+                // console.log('chat refreshed for room', room_id);
+            }
+        }, 1000);
+    </script>
+
+    <div class="chat-container">
+
+        <div class="channel-list">
+            <h1> Room {{ room }}</h1>
+            <div class="channel-item" id="channels"></div>
+            <button class="channel-item" onclick="createChat()"> + </button>
+        </div>
+        
+
+        <div class="chat-view">
+            <div id="chat">
+                <!-- Chat messages will be displayed here -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="message-input" placeholder="Type your message">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
