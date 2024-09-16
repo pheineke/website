@@ -1,0 +1,77 @@
+body {
+    font-family: "Arial", sans-serif;
+    background-color: #C0C0C0; /* Windows 2000 typische graue Farbe */
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border: 2px solid #000080; /* Dunkelblauer Rand für das typische Windows-Design */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Verdana", sans-serif;
+    color: #000080; /* Typische Windows 2000 Schriftfarbe */
+}
+
+a {
+    color: #0000EE; /* Standard blau für Links */
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #551A8B; /* Violett für besuchte Links */
+}
+
+button, input[type="submit"] {
+    font-family: "Tahoma", sans-serif;
+    background-color: #E0E0E0; /* Typischer grauer Button-Hintergrund */
+    border: 2px outset #DCDCDC; /* Windows-ähnlicher Button-Stil */
+    padding: 5px 10px;
+    color: black;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #D0D0D0; /* Leicht dunklerer Effekt beim Hover */
+    cursor: pointer;
+}
+
+input[type="text"], textarea {
+    border: 2px inset #DCDCDC;
+    padding: 5px;
+    background-color: white;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 10px;
+    font-family: "Courier New", monospace; /* Alte Schrift für Tabellen */
+}
+
+th {
+    background-color: #D0D0D0;
+}
+
+td {
+    background-color: #F0F0F0;
+}
+
+footer {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #D0D0D0;
+    border-top: 1px solid black;
+}
+
