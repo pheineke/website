@@ -1,2 +1,5 @@
+__pycache__/
+app/__pycache__/
+app/models/__pycache__/
 venv/
 update_app.sh
