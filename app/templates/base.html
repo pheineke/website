@@ -23,9 +23,15 @@
                 <input type="submit" value="Chat" />
             </form>
 
+            <form action="{{ url_for('spotify.index') }}" method="get">
+                <input type="submit" value="Spotify" />
+            </form>
+
             <form action="{{ url_for('changelog.index') }}" method="get">
                 <input type="submit" value="Changelog" />
             </form>
+
+            
 
         {% endblock %}
     </nav>
