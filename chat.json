@@ -1,27 +1,18 @@
 {
-    "room_count": 2,
-    "room_data":
-    [
-        {
-            "room_id": 1,
-            "messages": [
-                {"user": "user_01", "content": "Hello"},
-                {"user": "user_02", "content": "Hi"},
-                {"user": "user", "content": "hi"},
-                {"user": "user", "content": "so\u00dfenbinder"},
-                {"user": "user", "content": "so\u00dfenbinder"},
-                {"user": "user", "content": "hallo"}
-            ]
-        },
-        {
-            "room_id": 2,
-            "messages": [
-                {"user": "user_01", "content": "What's up?"}, 
-                {"user": "user_02", "content": "Whoa"},
-                {"user": "user", "content": "hallo"},
-                {"user": "user", "content": "hallo"}
-        
-            ]
-        }
+  "room_count": 1,
+  "1": {
+    "room_id": 1,
+    "messages": [
+      {
+        "user": "SYSTEM",
+        "content": "Room created",
+        "datetime": "2024-09-17T02:56:21.959332"
+      },
+      {
+        "user": "user",
+        "content": "hiii",
+        "datetime": "2024-09-17T02:56:29.451904"
+      }
     ]
+  }
 }

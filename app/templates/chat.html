@@ -12,7 +12,7 @@
 
 {% block content %}
     <script>
-        let room_id = 1;
+        let room_id = 0;
 
         getRooms();
 
@@ -38,14 +38,14 @@
         //load chat messages
         // this is how the response will look like [{'user': 'user_01', 'msg': 'Hello'}, {'user': 'user_02', 'msg': 'Hi'}]
         function loadChat(room) {
-            fetch(`/chat/${room}`)
+            fetch(`/chat/room/${room}`)
             .then(response => response.json())
             .then(data => {
                 const chat = document.getElementById('chat');
                 chat.innerHTML = '';
                 data.forEach(message => {
                     const div = document.createElement('div');
-                    div.innerHTML = `<strong>${message.user}</strong>: ${message.content}`;
+                    div.innerHTML = `<strong>${message.user}</strong>: ${message.content} <small>${message.datetime}</small>`;
                     chat.appendChild(div);
                 });
                 room_id = room;
@@ -65,7 +65,9 @@
             .then(data => {
                 console.log(data);
             });
+            document.getElementById('message-input').value = ''
         }
+
 
         function createChat() {
             fetch(`/chat/create`)
@@ -73,6 +75,7 @@
             .then(data => {
                 console.log(data);
             });
+            getRooms()
         }
 
         setInterval(() => {

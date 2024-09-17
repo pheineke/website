@@ -8,6 +8,8 @@
 }
 
 .channel-list {
+    padding: 10px;
+
     order: 1;
     flex-grow: 1;
     /* should be flex box */
@@ -19,6 +21,8 @@
 }
 
 .chat-view {
+    padding: 10px;
+
     order: 2;
     flex-grow: 8;
     /* should be flex box */
