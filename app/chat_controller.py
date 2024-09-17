@@ -22,10 +22,12 @@ def rooms():
 
 @chat.route('/room/<room_id>', methods=['GET'])
 def history(room_id):
-    
-    data = chat_handler.get_messages(room=room_id)
+    if chat_handler.get_room_count() == 0:
+        return jsonify({"no": "no"})
+    else:
+        data = chat_handler.get_messages(room=room_id)
 
-    return jsonify(data)
+        return jsonify(data)
 
 @chat.route('/send/<room_id>', methods=['POST'])
 def send(room_id):

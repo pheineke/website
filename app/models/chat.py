@@ -1,10 +1,26 @@
-import json
+import json, os
 from datetime import datetime
 
 class Chat():
     def __init__(self) -> None:
         self.filepath = 'chat.json'
+        self.create_chat()
         self.room_count = self.get_room_count()
+
+    def create_chat(self):
+        # Überprüfen, ob die Datei bereits existiert
+        if not os.path.exists(self.filepath):
+            # JSON-Inhalt mit room_count = 0
+            initial_data = {
+                "room_count": 0
+            }
+
+            # Datei erstellen und initiales JSON schreiben
+            with open(self.filepath, 'w') as file:
+                json.dump(initial_data, file, indent=2)
+            print(f"{self.filepath} wurde erfolgreich erstellt.")
+        else:
+            print(f"{self.filepath} existiert bereits.")
 
     def get_room_count(self):
         with open(self.filepath, 'r') as file:
