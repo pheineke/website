@@ -8,8 +8,12 @@ WORKDIR /app
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Git installieren
-RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+# Git, vim, nano installieren
+RUN apt-get update && apt-get install -y \
+    git \
+    vim \
+    nano && \
+    rm -rf /var/lib/apt/lists/*
 
 # Kopiere das Flask-Projekt
 COPY . .
