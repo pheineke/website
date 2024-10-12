@@ -1,5 +1,5 @@
 from flask import Flask
-
+from flask_socketio import SocketIO
 
 def create_app():
     app = Flask(__name__)
@@ -19,4 +19,6 @@ def create_app():
     from app.casaos_controller import casaos
     app.register_blueprint(casaos, url_prefix='/casaos')
     
-    return app
+    socketio = SocketIO(app=app)
+
+    return app, socketio

@@ -1,7 +1,12 @@
-from flask import Flask, Blueprint, render_template, request, redirect, url_for, flash, session, jsonify
+from flask import Flask, Blueprint, render_template, request, redirect, url_for, flash, session, jsonify, current_app
+from flask_socketio import *
+
 import json
 
-from app.models.chat import Chat
+from app.models.text_chat import Chat
+from app.models.voice_chat import VoiceChat
+
+
 
 
 chat = Blueprint('chat', __name__)
@@ -44,8 +49,22 @@ def send(room_id):
 
         return jsonify(data)
 
-@chat.route('/create')
-def create_room():
+@chat.route('/create_text')
+def create_chat_room():
     data = chat_handler.create_room()
 
     return jsonify(data)
+
+#######
+
+@socketio.on('audio_data')
+def handle_audio(data):
+    emit('audio_stream', data, broadcast=True)  # Broadcast to all connected clients
+
+
+@chat.route('/create_voice')
+def create_voice_room():
+    data = chat_handler.create_voice_room()
+
+    return jsonify(data)
+

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Articles{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/articles.css') }}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="article">
+        {{ url_for('static', filename='articles/content/0001.html') }}
+    </div>
+{% endblock %}
