@@ -18,6 +18,9 @@ def create_app():
 
     from app.casaos_controller import casaos
     app.register_blueprint(casaos, url_prefix='/casaos')
+
+    from app.articles_controller import articles
+    app.register_blueprint(articles, url_prefix='/articles')
     
     socketio = SocketIO(app=app)
 
